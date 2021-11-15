@@ -4,9 +4,15 @@ body {
   color: white;
   margin: 0;
   font-family: monospace;
+  min-height: 100%;
 }
 
-h1, h2 {
+html {
+  min-height: 100%;
+}
+
+h1,
+h2 {
   margin: 0;
 }
 
@@ -40,39 +46,39 @@ a:active {
   color: red;
 }
 
-
 /* --- Cabeçalho --- */
-#cabecalho {
-  background-color: rgba(0, 0, 0, .95);
-  box-shadow: 2px 10px 10px rgba(0,0,0, .25);
+header {
+  background-color: rgba(0, 0, 0, 0.95);
+  box-shadow: 2px 10px 10px rgba(0, 0, 0, 0.25);
   padding-top: 1em;
   text-align: center;
 }
 
-#cabecalho ul {
+header ul {
   background-color: rgba(0, 204, 147, 0.53);
+  padding-left: none;
+  list-style-type: none;
+}
+header li {
+  display: inline-block;
+  padding: 10px;
 }
 
-#cabecalho a {
+header a {
   text-decoration: none;
   text-shadow: 1px 1px black;
 }
 
-#menu-de-navegacao ul {
+nav ul {
   margin-bottom: 0;
 }
 
-
-
 /* --- Conteúdo principal da página --- */
-#conteudo-principal {
+main {
   padding-left: 2.5%;
   transition: opacity 1s linear;
   padding-bottom: 3em;
 }
-
-
-
 
 /* --- Principal >> Postagens principais --- */
 #posts-principais {
@@ -86,13 +92,22 @@ a:active {
 #posts-principais .post {
   width: 40%;
   max-width: 400px;
+  display: inline-block;
   margin-left: 2.5%;
   margin-right: 2.5%;
-  display: inline-block;
+  position: relative;
 }
 
 #posts-principais .post .titulo {
   text-shadow: 1px 1px black;
+  position: absolute;
+  top: 0;
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+}
+#posts-principais .post :hover {
+  opacity: 1;
 }
 
 #posts-principais .post img {
@@ -100,11 +115,46 @@ a:active {
   max-width: 400px;
   box-sizing: border-box;
   border: 6px solid white;
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
 }
 
+.novidade::before {
+  content: "Novidade!";
+  display: inline-block;
+  background: orange;
+  border-radius: 20px;
+  margin-right: 1em;
+  background-color: green;
+  padding: 0.25em;
+  border-radius: 0.25em;
+}
 
+.boo {
+  opacity: 0.2;
+  transition: all 2000ms ease; /* <---- */
+  position: fixed;
+  width: 40px;
+  display: block;
+}
 
+.boo:hover {
+  opacity: 1;
+}
+
+#boo1 {
+  top: 100px;
+  right: 800px;
+}
+
+#boo2 {
+  top: 20px;
+  right: 100px;
+}
+
+#boo3 {
+  bottom: 100px;
+  right: 800px;
+}
 
 /* --- Principal >> Últimas postagens --- */
 #ultimas-postagens {
@@ -133,9 +183,6 @@ a:active {
   display: inline-block;
 }
 
-
-
-
 /* --- Principal >> Nuvem de tags --- */
 #tags {
   float: right;
@@ -144,14 +191,25 @@ a:active {
   background-color: black;
   background-image: url(imgs/mula.webp);
   background-repeat: no-repeat;
-  background-size: 300px;
+  background-size: cover;
   box-shadow: -4px 0 10px rgba(0, 0, 0, 0.5);
   text-align: center;
+  position: sticky;
+  top: 0;
 }
 
 #tags h1 {
   margin-bottom: 1em;
   text-shadow: 2px 2px #000;
+}
+
+.tag-1:active,
+.tag-2:active,
+.tag-3:active {
+  position: relative;
+  top: -2px;
+  left: -2px;
+  cursor: pointer;
 }
 
 .tag-1,
@@ -174,24 +232,16 @@ a:active {
   font-size: 150%;
 }
 
-
-
-
-
 /* --- Rodapé --- */
-#rodape {
-  background-color: rgba(0, 0, 0, .7);
+footer {
+  background-color: rgba(0, 0, 0, 0.7);
   padding: 1em;
   display: flex;
 }
 
-#rodape .logo-rodape {
+footer .logo-rodape {
   margin-right: 2em;
 }
-
-
-
-
 
 /* --- Vídeo --- */
 .backdrop {
@@ -226,7 +276,7 @@ a:active {
   top: calc(50% - 0.75em);
   border-radius: 50%;
   border: 2px solid currentColor;
-  background-color: rgba(255, 255, 255, .15);
+  background-color: rgba(255, 255, 255, 0.15);
   color: black;
   font-size: 2.5rem;
   width: 1.5em;
@@ -235,8 +285,8 @@ a:active {
   padding: 0;
   box-sizing: border-box;
   text-align: center;
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, .15);
-  text-shadow: 2px 2px 2px rgba(0, 0, 0, .15);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.15);
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.15);
 }
 
 #unmute:hover {
